@@ -2,5 +2,7 @@
 __pycache__
 .idea
 expr/
+expr1/
+expr2/
 data/
 logs/
