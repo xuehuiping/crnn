@@ -225,8 +225,13 @@ for epoch in range(opt.nepoch):
               (epoch, opt.nepoch, i, len(train_loader), cost))
 
         # 保存模型
-        if i % opt.saveInterval == 0:
-            torch.save(
-                crnn.state_dict(), '{0}/CRNN_{1}_{2}.pth'.format(opt.expr_dir, epoch, i))
+        # if i % opt.saveInterval == 0:
+        #     torch.save(
+        #         crnn.state_dict(), '{0}/CRNN_{1}_{2}.pth'.format(opt.expr_dir, epoch, i))
 
     val(crnn, test_dataset, criterion)
+
+    if epoch % opt.saveInterval == 0:
+        torch.save(crnn.state_dict(), '{0}/CRNN_{1}.pth'.format(opt.expr_dir, epoch))
+
+torch.save(crnn.state_dict(), '{0}/CRNN_final.pth'.format(opt.expr_dir))
